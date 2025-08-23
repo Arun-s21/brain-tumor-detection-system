@@ -32,7 +32,7 @@ const FileUpload = ({ files, setFiles }) => {
     <div className="space-y-4">
       <div
         {...getRootProps()}
-        className={`w-full p-8 border-2 border-dashed rounded-xl cursor-pointer transition-colors duration-300 text-center
+        className={` p-6 border-2 border-dashed rounded-xl cursor-pointer transition-colors duration-300 text-center
         ${isDragActive ? 'border-green-600 bg-green-50' : 'border-gray-300 hover:border-green-500 bg-white'}`}
       >
         <input {...getInputProps()} />
