@@ -9,7 +9,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-24">
           {/* Title with a reasonable font size */}
           <div className="text-2xl font-semibold tracking-wider">
-            <Link className="text-green-800 hover:text-green-900" href="/">CerebroScan AI</Link>
+            <Link className="text-green-800 hover:text-green-900" href="/">CerebroScan</Link>
           </div>
 
           {/* Navigation links */}
