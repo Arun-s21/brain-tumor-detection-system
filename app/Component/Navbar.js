@@ -9,26 +9,26 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-24">
           {/* Title with a reasonable font size */}
           <div className="text-2xl font-semibold tracking-wider">
-            <Link className="text-green-800 hover:text-green-900" href="/">CerebroScan</Link>
+            <Link className="text-green-400 hover:text-green-500" href="/">CerebroScan</Link>
           </div>
 
           {/* Navigation links */}
           <nav className=" md:flex items-center space-x-10">
             {/* Larger, more readable links with a better hover effect */}
             <a
-              href="/#about"
+              href="/information"
               className="text-sm uppercase tracking-widest text-white/70 hover:text-white transition-colors"
             >
               Information
             </a>
             <a
-              href="/#results"
+              href="/results"
               className="text-sm uppercase tracking-widest text-white/70 hover:text-white transition-colors"
             >
               Results
             </a>
             <a
-              href="/#contact"
+              href="/about"
               className="text-sm uppercase tracking-widest text-white/70 hover:text-white transition-colors"
             >
               About Us
