@@ -3,9 +3,9 @@ import { Brain, ShieldCheck, Activity, Target } from 'lucide-react';
 // Reusable component for content cards
 const InfoCard = ({ title, children }) => (
   <div className="bg-gray-900/50 border border-gray-800 rounded-lg p-6 backdrop-blur-sm">
-    <h3 className="text-xl font-bold text-green-400 mb-3">{title}</h3>
+    <h3 className="text-4xl font-bold text-green-400 mb-3">{title}</h3>
     {/* Increased font size and line height for better readability */}
-    <div className="space-y-3 text-white/80 text-base leading-relaxed">{children}</div>
+    <div className="space-y-3 text-xl text-white/80  leading-relaxed">{children}</div>
   </div>
 );
 
@@ -24,10 +24,10 @@ export default function InformationPage() {
       <main className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <header className="text-center mb-12">
           <Brain className="w-16 h-16 mx-auto text-green-400 mb-4" />
-          <h1 className="text-4xl sm:text-5xl font-extrabold text-white">
+          <h1 className="text-4xl sm:text-6xl font-extrabold text-white">
             Understanding Brain Tumors
           </h1>
-          <p className="mt-4 text-lg text-white/70">
+          <p className="mt-4 text-2xl text-white/70">
             A comprehensive overview of brain tumors, their types, and their impact.
           </p>
         </header>

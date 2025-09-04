@@ -37,10 +37,19 @@ export default function UploadPage() {
         // The browser does it automatically for FormData.
       });
 
+      
       // 4. Check if the request was successful
       if (!response.ok) {
-        throw new Error(`Server error: ${response.status}`);
+        let errorMessage = `Server error: ${response.status}`;
+        try {
+          const errorData = await response.json();
+          errorMessage = errorData.message || errorMessage;
+        } catch {
+          // ignore JSON parse error
+        }
+        throw new Error(errorMessage);
       }
+
 
       // 5. Get the JSON result from the server and update the state
       const data = await response.json();
@@ -49,9 +58,9 @@ export default function UploadPage() {
     } catch (error) {
       // 6. Handle any errors during the upload
       console.error("Failed to upload files:", error);
-      setResult({ 
-        prediction: "Error", 
-        details: "Failed to get a result. Please try again." 
+      setResult({
+        prediction: "Error",
+        details: "Failed to get a result. Please try again."
       });
     } finally {
       setIsLoading(false);
@@ -70,8 +79,8 @@ export default function UploadPage() {
       <div className="max-w-6xl mx-auto">
         <div className="mb-8">
           <Link href="/" className="inline-flex items-center gap-2 text-gray-400 hover:text-white transition-colors">
-              <ArrowLeft size={16} />
-              Back to Home
+            <ArrowLeft size={16} />
+            Back to Home
           </Link>
         </div>
 
@@ -95,35 +104,35 @@ export default function UploadPage() {
                   className="w-full mt-8 py-3 px-6 rounded-lg font-semibold text-white transition-colors flex items-center justify-center
                              bg-green-800 hover:bg-green-700 disabled:bg-gray-600 disabled:cursor-not-allowed"
                 >
-                  {isLoading ? <><Loader className="animate-spin mr-2"/> Analyzing...</> : "Run Analysis"}
+                  {isLoading ? <><Loader className="animate-spin mr-2" /> Analyzing...</> : "Run Analysis"}
                 </button>
               </form>
             </div>
 
             {/* Right Column: Results */}
             <div className="md:col-span-3 bg-gray-900/70 p-6 rounded-xl border border-gray-700 flex flex-col min-h-[400px]">
-              <h2 className="text-2xl font-bold mb-6 flex items-center self-start text-gray-300"><BrainCircuit className="mr-3 text-green-400"/> Analysis Result</h2>
-              
+              <h2 className="text-2xl font-bold mb-6 flex items-center self-start text-gray-300"><BrainCircuit className="mr-3 text-green-400" /> Analysis Result</h2>
+
               <div className="flex-grow flex flex-col items-center justify-center">
                 {isLoading && (
-                    <div className="text-center">
-                        <Loader className="w-16 h-16 text-green-400 animate-spin mb-4 mx-auto"/>
-                        <p className="text-lg font-semibold">Processing Scans...</p>
-                    </div>
+                  <div className="text-center">
+                    <Loader className="w-16 h-16 text-green-400 animate-spin mb-4 mx-auto" />
+                    <p className="text-lg font-semibold">Processing Scans...</p>
+                  </div>
                 )}
 
                 {!isLoading && !result && (
-                    <div className="text-center text-gray-500">
-                        <BrainCircuit className="w-20 h-20 mx-auto mb-4 opacity-50"/>
-                        <p>Your analysis results will appear here.</p>
-                    </div>
+                  <div className="text-center text-gray-500">
+                    <BrainCircuit className="w-20 h-20 mx-auto mb-4 opacity-50" />
+                    <p>Your analysis results will appear here.</p>
+                  </div>
                 )}
               </div>
 
               {result && (
                 <div className={` p-6 rounded-lg ${result.prediction === 'Tumor Detected' ? 'bg-red-900/50 border-red-500' : 'bg-green-900/50 border-green-500'} border`}>
                   <div className="flex items-center text-2xl font-bold mb-4">
-                    {result.prediction === 'Tumor Detected' ? <AlertTriangle className="mr-3 text-red-400"/> : <CheckCircle2 className="mr-3 text-green-400"/>}
+                    {result.prediction === 'Tumor Detected' ? <AlertTriangle className="mr-3 text-red-400" /> : <CheckCircle2 className="mr-3 text-green-400" />}
                     {result.prediction}
                   </div>
                   <div className="space-y-2 text-sm">
@@ -132,10 +141,10 @@ export default function UploadPage() {
                     <p className="pt-3 border-t border-white/10 mt-3"><span className="font-semibold text-gray-300">Details:</span> {result.details}</p>
                   </div>
                   <button
-                      onClick={handleReset}
-                      className="mt-6 bg-gray-600 hover:bg-gray-500 text-white font-semibold py-2 px-4 rounded-lg w-full transition-colors"
+                    onClick={handleReset}
+                    className="mt-6 bg-gray-600 hover:bg-gray-500 text-white font-semibold py-2 px-4 rounded-lg w-full transition-colors"
                   >
-                      Analyze New Scans
+                    Analyze New Scans
                   </button>
                 </div>
               )}

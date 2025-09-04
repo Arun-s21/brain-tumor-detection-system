@@ -7,9 +7,9 @@ const InfoCard = ({ title, icon, children }) => (
       <div className="p-2 bg-green-900/50 border border-green-700 rounded-md mr-4">
         {icon}
       </div>
-      <h3 className="text-xl font-bold text-green-400">{title}</h3>
+      <h3 className="text-4xl font-bold text-green-400">{title}</h3>
     </div>
-    <div className="space-y-3 text-white/80 text-base leading-relaxed">{children}</div>
+    <div className="space-y-3 text-white/80 text-xl leading-relaxed">{children}</div>
   </div>
 );
 
@@ -28,10 +28,10 @@ export default function ResultsPage() {
       <main className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <header className="text-center mb-12">
           <Bot className="w-16 h-16 mx-auto text-green-400 mb-4" />
-          <h1 className="text-4xl sm:text-5xl font-extrabold text-white">
+          <h1 className="text-4xl sm:text-6xl font-extrabold text-white">
             Our Model's Architecture
           </h1>
-          <p className="mt-4 text-lg text-white/70">
+          <p className="mt-4 text-2xl text-white/70">
             An inside look at how our Convolutional Neural Network (CNN) processes MRI scans.
           </p>
         </header>
